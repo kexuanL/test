@@ -1,4 +1,3 @@
-
 # MBTI classification
 - [Data Processing & EDA](#data-processing--eda)
 - [Logistic Regression Model](#logistic-regression-model)
@@ -172,16 +171,3 @@ Training is conducted with PyTorch and Hugging Face Transformers.
   - Validation loss  
   - Validation accuracy  
 - Review metrics after each epoch to assess convergence and model performance  
-
-
-
-
-
-
-
-
-
-
-
-
-
