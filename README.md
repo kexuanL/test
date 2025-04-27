@@ -171,3 +171,31 @@ Training is conducted with PyTorch and Hugging Face Transformers.
   - Validation loss  
   - Validation accuracy  
 - Review metrics after each epoch to assess convergence and model performance  
+---
+## Hugging Face API deployment
+
+To deploy our project's MBTI classification model on Hugging Face, download the files from the `API.zip` folder to build and run the API.
+
+### Project Structure
+
+- `app.py` – Main FastAPI app with ensembling logic  
+- `Dockerfile` – Defines the Docker image for deployment on Hugging Face Spaces  
+- `requirements.txt` – Lists the required Python libraries  
+- `labels.joblib` – Label encoder saved in joblib format  
+
+> **Note:** The `bert_16/` model directory is not included in `API.zip` due to file size limitations.  
+> Please manually download the `bert_16/` folder from [this link](#). The folder should contain:  
+> - `config.json`  
+> - `model.safetensors`  
+> - `special_tokens_map.json`  
+> - `tokenizer_config.json`  
+> - `vocab.txt`  
+
+### API Inference Script (`app.py`)
+
+- **Loads** a fine-tuned BERT model from `bert_16/`  
+- **Loads** a label encoder from `labels.joblib`  
+- **Uses** Hugging Face Transformers for tokenization and prediction  
+- **Endpoints:**  
+  - `GET /health` – Health check endpoint  
+  - `POST /predict` – Returns MBTI label and confidence score  
